@@ -1,0 +1,290 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+}
+
+.app {
+  height: 100vh;
+  display: flex;
+  background-color: #020230;
+  color: white;
+}
+.app .start {
+  width: 450px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  position: relative;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+.app .start input {
+  width: 100%;
+  height: 50px;
+  border: none;
+  text-align: center;
+  font-size: 18px;
+}
+.app .start input:focus {
+  outline: none;
+}
+.app .start button {
+  width: 100%;
+  height: 50px;
+  margin-top: 10px;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 500;
+}
+.app .main {
+  width: 75%;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0), #020230), url("./assets/bg.jpg") center;
+  display: flex;
+  flex-direction: column;
+}
+.app .main .loseGame {
+  position: relative;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+.app .main .top {
+  height: 50%;
+  position: relative;
+}
+.app .main .top .timer {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 5px solid white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  font-weight: 700;
+  position: absolute;
+  bottom: 30px;
+  left: 100px;
+}
+.app .main .bottom {
+  height: 50%;
+}
+.app .main .bottom .quiz {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+}
+.app .main .bottom .quiz .question {
+  width: 85%;
+  background: linear-gradient(#111111, black);
+  border: 2px solid white;
+  text-align: center;
+  padding: 20px;
+  border-radius: 5px;
+  font-size: 25px;
+  margin-bottom: 100px;
+}
+.app .main .bottom .quiz .answers {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.app .main .bottom .quiz .answers .answer {
+  width: 40%;
+  padding: 18px;
+  cursor: pointer;
+  transition: 0.5s;
+  margin: 0 10px 20px 10px;
+  text-align: center;
+  background: linear-gradient(#111111, black);
+  border: 1px solid white;
+  border-radius: 15px;
+  font-size: 23px;
+  font-weight: 300;
+}
+.app .main .bottom .quiz .answers .answer:hover, .app .main .bottom .quiz .answers .answer.active {
+  background: linear-gradient(#077c7c, teal);
+}
+.app .main .bottom .quiz .answers .answer.correct {
+  -webkit-animation: correct 4s ease-in-out forwards;
+          animation: correct 4s ease-in-out forwards;
+}
+.app .main .bottom .quiz .answers .answer.wrong {
+  -webkit-animation: wrong 4s ease-in-out forwards;
+          animation: wrong 4s ease-in-out forwards;
+}
+@-webkit-keyframes wrong {
+  0%, 22%, 42% {
+    background: linear-gradient(#077c7c, teal);
+  }
+  20%, 40%, 60% {
+    background: linear-gradient(#111111, black);
+  }
+  62%, 100% {
+    background: crimson;
+  }
+}
+@keyframes wrong {
+  0%, 22%, 42% {
+    background: linear-gradient(#077c7c, teal);
+  }
+  20%, 40%, 60% {
+    background: linear-gradient(#111111, black);
+  }
+  62%, 100% {
+    background: crimson;
+  }
+}
+@-webkit-keyframes correct {
+  0%, 22%, 42% {
+    background: linear-gradient(#077c7c, teal);
+  }
+  20%, 40%, 60% {
+    background: linear-gradient(#111111, black);
+  }
+  62%, 100% {
+    background: green;
+  }
+}
+@keyframes correct {
+  0%, 22%, 42% {
+    background: linear-gradient(#077c7c, teal);
+  }
+  20%, 40%, 60% {
+    background: linear-gradient(#111111, black);
+  }
+  62%, 100% {
+    background: green;
+  }
+}
+.app .money {
+  width: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+  margin-bottom: 10vh;
+}
+.app .money h3 {
+  font-size: 30px;
+  top: 30px;
+}
+.app .money .logo {
+  width: 300px;
+  height: 300px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.app .money ul {
+  list-style: none;
+  width: 100%;
+  height: 65%;
+  padding: 20px;
+  margin: 10px;
+  margin-top: 30px;
+}
+.app .money ul .active {
+  background-color: teal;
+}
+.app .money ul li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  border-radius: 5px;
+  margin-right: 20px;
+  position: relative;
+}
+.app .money ul li .question {
+  font-size: 22px;
+  font-weight: 100;
+  width: 30%;
+  position: absolute;
+  left: 10%;
+}
+.app .money ul li .amount {
+  font-size: 28px;
+  font-weight: 300;
+}
+
+@media (max-width: 1258px) {
+  .app .money .question {
+    display: none;
+  }
+}
+@media (max-width: 885px) {
+  .app .main {
+    width: 65%;
+  }
+  .app .main .top {
+    height: 30%;
+  }
+  .app .main .bottom {
+    height: 80%;
+  }
+  .app .money {
+    width: 40%;
+  }
+  .app .money .question {
+    display: none;
+  }
+}
+@media (max-width: 586px) {
+  .app .main {
+    width: 50%;
+  }
+  .app .main .top {
+    height: 30%;
+  }
+  .app .main .bottom {
+    height: 80%;
+  }
+  .app .money {
+    width: 50%;
+  }
+  .app .money .question {
+    display: none;
+  }
+}
+@media (max-height: 824px) {
+  .app .money h3 {
+    height: 20%;
+    margin-top: 40px;
+  }
+  .app .money ul {
+    height: 80%;
+  }
+}
+@media (max-height: 814px) {
+  .app .main {
+    width: 75%;
+  }
+  .app .main .top {
+    height: 35%;
+  }
+  .app .main .bottom {
+    height: 80%;
+  }
+  .app .money h3 {
+    display: none;
+  }
+  .app .money ul {
+    height: 90%;
+  }
+  .app .money ul li .amount {
+    font-size: 20px;
+  }
+}/*# sourceMappingURL=app.css.map */

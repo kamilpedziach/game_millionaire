@@ -1,0 +1,79 @@
+@import './variables';
+.quiz{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+  .question{
+    width: 85%;
+    background: linear-gradient(rgb(17, 17, 17), black);
+    border: 2px solid white;
+    text-align: center;
+    padding: 20px;
+    border-radius: 5px;
+    font-size: 25px;
+    margin-bottom: 100px;
+  }
+  .answers{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    .answer{
+      width: 40%;
+      padding: 18px;
+      cursor: pointer;
+      transition: .5s;
+      margin: 0 10px 20px 10px;
+      text-align: center;
+      background: linear-gradient(rgb(17, 17, 17), black);
+      border: 1px solid white;
+      border-radius: 15px;
+      font-size: 23px;
+      font-weight: 300;
+      &:hover, &.active{
+        background: linear-gradient(rgb(7, 124, 124), teal);
+      }
+      &.correct{
+        animation: correct 4s ease-in-out forwards;
+      }
+      &.wrong{
+        animation: wrong 4s ease-in-out forwards;
+      }
+    }
+  }
+}
+
+@keyframes wrong {
+  0%,
+  22%,
+  42% {
+    background: linear-gradient(rgb(7, 124, 124), teal);
+  }
+  20%,
+  40%,
+  60%{
+    background: linear-gradient(rgb(17, 17, 17), black);
+  }
+  62%,
+  100%{
+    background: crimson;
+  }
+}
+@keyframes correct {
+  0%,
+  22%,
+  42% {
+    background: linear-gradient(rgb(7, 124, 124), teal);
+  }
+  20%,
+  40%,
+  60%{
+    background: linear-gradient(rgb(17, 17, 17), black);
+  }
+  62%,
+  100%{
+    background: green;
+  }
+}
