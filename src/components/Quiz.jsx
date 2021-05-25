@@ -8,6 +8,7 @@ const Quiz = ({ questionNumber, setStop, data, setQuestionNumber }) => {
   const [question, setQuestion] = useState(null);
   const [selectedQuestion, setSelectedQuestion] = useState(null);
   const [className, setClassName] = useState("answer");
+  const [multipleClickBlock, setMultipleClickBlock] = useState(false);
   const [letsPlay] = useSound(play);
   const [correctAnswer] = useSound(correct);
   const [wrongAnswer] = useSound(wrong);
@@ -36,13 +37,17 @@ const Quiz = ({ questionNumber, setStop, data, setQuestionNumber }) => {
       if (a.correct) {
         correctAnswer();
         delay(1000, () => {
-          if (questionNumber === 15) {
-            setStop(true);
-          } else {
-            setQuestionNumber((prev) => prev + 1);
-            setSelectedQuestion(null);
-          }
-        });
+        if (!multipleClickBlock) {
+          delay(1000, () => {
+            if (questionNumber === 15) {
+              setStop(true);
+            } else {
+              setQuestionNumber((prev) => prev + 1);
+              setSelectedQuestion(null);
+            }
+          });
+        }
+        setMultipleClickBlock(true);
       } else {
         wrongAnswer();
         delay(1000, () => {
