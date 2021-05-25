@@ -28,33 +28,34 @@ const Quiz = ({ questionNumber, setStop, data, setQuestionNumber }) => {
   };
 
   const handleClick = (a) => {
-    setSelectedQuestion(a);
-    setClassName("answer active");
-    delay(2000, () =>
-      setClassName(a.correct ? "answer correct" : "answer wrong")
-    );
-    delay(5000, () => {
-      if (a.correct) {
-        correctAnswer();
-        if (!multipleClickBlock) {
+    if (!multipleClickBlock) {
+      setSelectedQuestion(a);
+      setClassName("answer active");
+      delay(2000, () =>
+        setClassName(a.correct ? "answer correct" : "answer wrong")
+      );
+      delay(5000, () => {
+        if (a.correct) {
+          correctAnswer();
           delay(1000, () => {
             if (questionNumber === 15) {
               setStop(true);
             } else {
               setQuestionNumber((prev) => prev + 1);
               setSelectedQuestion(null);
+              setMultipleClickBlock(false);
             }
           });
+        } else {
+          wrongAnswer();
+          delay(1000, () => {
+            setQuestionNumber((prev) => prev - 1);
+            setStop(true);
+          });
         }
-        setMultipleClickBlock(true);
-      } else {
-        wrongAnswer();
-        delay(1000, () => {
-          setQuestionNumber((prev) => prev - 1);
-          setStop(true);
-        });
-      }
-    });
+      });
+    }
+    setMultipleClickBlock(true);
   };
 
   const answerList = question?.answers.map((a) => (
