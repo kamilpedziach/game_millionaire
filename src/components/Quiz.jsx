@@ -8,8 +8,8 @@ const Quiz = ({ questionNumber, setStop, data, setQuestionNumber }) => {
   const [question, setQuestion] = useState(null);
   const [selectedQuestion, setSelectedQuestion] = useState(null);
   const [className, setClassName] = useState("answer");
-  const [multipleClickBlock, setMultipleClickBlock] = useState(false);
   const [letsPlay] = useSound(play);
+  const [multipleClickBlock, setMultipleClickBlock] = useState(false);
   const [correctAnswer] = useSound(correct);
   const [wrongAnswer] = useSound(wrong);
 
@@ -36,7 +36,6 @@ const Quiz = ({ questionNumber, setStop, data, setQuestionNumber }) => {
     delay(5000, () => {
       if (a.correct) {
         correctAnswer();
-        delay(1000, () => {
         if (!multipleClickBlock) {
           delay(1000, () => {
             if (questionNumber === 15) {
